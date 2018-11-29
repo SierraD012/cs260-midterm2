@@ -1,8 +1,24 @@
+h1 {
+  font-family: "Lucida Grande", sans-serif;
+  color: #000000;
+}
+
 body {
-  padding: 50px;
+  background-color: #fff6e5;
+  padding: 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.productImage {
+  width: 82px;
+  padding: 8px;
+  
+}
+
+.pageTitle {
+  font-size:40px;
+  font-family: "Lucida Grande", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
 }

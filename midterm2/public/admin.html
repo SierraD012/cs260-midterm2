@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Midterm2: Admin Page</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+<body ng-app="shopping" ng-controller="MainCtrl">
+  
+  <p class="pageTitle">World's Best Online Store</p>
+  <h1>Management Interface</h1>
+  <form ng-submit="addProduct()">
+    <label for="prodName">Product Name</label>
+    <input type="text" id="prodName" ng-model="newProductName"></input> <br>
+    <label for="prodPrice">Price</label>
+    <input type="text" id="prodPrice" ng-model="newProductPrice"></input> <br>
+    <label for="prodImg">Picture URL</label>
+    <input type="text" id="prodImg" ng-model="newProductURL"></input>
+    <br>
+    <br>
+    <button type="submit">Add New Product</button>
+  </form>
+
+  <hr>
+
+  <h1>Current Products</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div ng-repeat="item in shopItems  | orderBy:'name'"> 
+          <span class="glyphicon glyphicon-remove" ng-click="delete(item)"></span> 
+          {{item.name}} - price: ${{item.price}} - ordered: {{item.numOrders}}
+          <img class="productImage" ng-src={{item.imgURL}}></img>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

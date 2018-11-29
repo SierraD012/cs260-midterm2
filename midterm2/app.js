@@ -4,6 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// You have to register your model file here or mongo will freak out!  ********
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/shopDB', {useNewUrlParser: true}); 
+// these next ones are just helpful printouts
+var db = mongoose.connection; //Saves the connection as a variable to use
+db.on('error', console.error.bind(console, 'connection error:')); //Checks for connection errors
+db.once('open', function() { //Lets us know when we're connected
+    console.log('Connected to DB');
+});
+require('./models/ShopItem');
+////////////////////////////////
+
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 

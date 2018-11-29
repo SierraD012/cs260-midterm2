@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Midterm2: Shopping Page</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+<body ng-app="shopping" ng-controller="MainCtrl">
+  
+  <p class="pageTitle">Welcome to the World's Best Online Store!</p>
+  <br>
+  <h1>Current Products</h1> <!-- This lists all shopItems in the store DB--> 
+  <div ng-repeat="item in shopItems | orderBy:'name'">
+     <input type="checkbox" ng-model="item.checked">    <!-- this sets the item scope obj's "checked" bool -->
+     {{item.name}} - price: ${{item.price}}
+     <img class="productImage" ng-src={{item.imgURL}}></img>
+  </div>
+  <br>
+  <button type="submit" ng-click="submitPurchase()">Purchase Selected Items</button>  <!-- Submitting a purchase adds this item to the Shopping Cart section, and incrs the numOrders for this item on the DB-->
+  
+  <br>
+  <hr> 
+  
+  <h1>Your Shopping Cart</h1></h1>
+  <h4 id='showTotal'>Total:</h4>
+  
+  <div class="row">
+    <div class="col-md-6">
+        <div ng-repeat="item in submittedCart  | orderBy:'name'"> 
+            {{item.name}} - price: ${{item.price}}
+            <img class="productImage" ng-src={{item.imgURL}}></img>
+        </div>
+    </div>
+  </div>
+  
+</body>
+</html>
